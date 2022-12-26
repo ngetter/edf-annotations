@@ -21,7 +21,7 @@ def _get_annotations(source, dest: str = ''):
 
     """
 
-    r = mne.io.read_raw_edf(source)
+    r = mne.io.read_raw_edf(source, encoding='latin1')
 
     annotations = r.annotations
 
@@ -39,11 +39,11 @@ def _save_annotations_to_file(annotations_df: pd.DataFrame ,dest: pathlib.Path, 
     Returns:
 
     """
-    with dest.open('a') as excelf:
+    with pd.ExcelWriter(dest) as excelf:
         annotations_df.to_excel(excelf, sheet=patient_id)
 
 def _read_all_edf_in_root_folder(root: pathlib.Path):
-    return root.glob('*/**.edf')
+    return root.glob('**/*.edf')
 
 def main(argv):
     glob_edf = _read_all_edf_in_root_folder(pathlib.Path(SOURCE))
