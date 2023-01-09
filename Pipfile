@@ -9,6 +9,10 @@ pandas = "*"
 python-dotenv = "*"
 pyqt5 = "*"
 openpyxl = "*"
+pyinstaller = "*"
+pyinstaller-hooks-contrib = "*"
+holoviews = "*"
+bokeh = "*"
 
 [dev-packages]
 
